@@ -1,10 +1,14 @@
 class Solution {
     public void rotate(int[][] matrix) {
         for(int i = 0 ; i <= matrix.length/2 ; i++){
-            for(int j = i ; i + j < matrix.length - 1 ; j ++)
+            for(int j = i ; i + j < matrix.length - 1 ; j ++){
+                //寻找规律，二维数组旋转90度旋转一个数，那么另外三个数必然随着旋转，例如一个3x3的二维数组只需要旋转a[0][0],a[0][1],a[1][1]
+                //即i<=a.length/2,i+j<a.length-1
                 rotate(matrix, i , j, 4);
+            }
         }
     }
+    //count参数用来终止递归，旋转90度只需要递归4次，
     public int rotate(int[][] matrix, int i, int j, int count) {
         int p = matrix[i][j];
         if(count>0)
